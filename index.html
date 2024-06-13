@@ -55,16 +55,21 @@
   </div>
 </section>
 
+
+
 <section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img id="teaser" src="./static/images/crossformer_teaser.png" alt="CrossFormer teaser image."/>
-      <br><br>
-      <h2 class="subtitle has-text-centered">
-        CrossFormer is the first robot policy achieving state-of-the-art performance across six embodiments of distinct action spaces without <i>any</i> action space alignment.
-      </h2>
+    <div class="container is-max-desktop">
+        <div class="hero-body">
+            <video id="home_vid" autoplay controls muted loop playsinline height="100%" width="100%" controls loop>
+                <source src="./static/videos/crossformer/home.mp4"
+                        type="video/mp4">
+            </video>
+            <br><br>
+            <h2 class="subtitle has-text-centered">
+                CrossFormer is the first robot policy achieving state-of-the-art performance across six embodiments of distinct action spaces without <i>any</i> action space alignment.
+            </h2>
+        </div>
     </div>
-  </div>
 </section>
 
 
@@ -92,7 +97,19 @@
     </div>
   </div>
 </section>
-    <!--/ Abstract. -->
+<!--/ Abstract. -->
+
+<!-- Architecture Diagram -->
+<section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img id="teaser" src="./static/images/crossformer_teaser.png" alt="CrossFormer teaser image."/>
+        <p style="text-align:center"> CrossFormer Architecture.</p>
+      </div>
+    </div>
+    
+</section>
+<!--/ Architecture Diagram. -->
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -303,6 +320,13 @@
 </footer>
 
 <script>
+  var home_vid = document.getElementById('home_vid');
+  home_vid.addEventListener('loadedmetadata', function() {
+    home_vid.playbackRate = 2.0;
+  });
+  home_vid.addEventListener('canplay', function() {
+    home_vid.play();
+  });
   // Access the video element
   var nav_video = document.getElementById('nav_vid');
   nav_video.addEventListener('loadedmetadata', function() {
@@ -359,6 +383,7 @@
   sharpturn_vid.addEventListener('canplay', function() {
     sharpturn_vid.play();
   });
+
 </script>
 
 </body>
