@@ -1,7 +1,365 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0; url=crossformer.github.io/cross-embodied-transformer/index.html">
-    <title>CrossFormer</title>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Scaling Cross-Embodied Learning: One Policy for Manipulation, Navigation, Locomotion and Aviation">
+  <meta name="keywords" content="Imitation Learning, Cross-Embodiment">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CrossFormer</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Scaling Cross-Embodied Learning: One Policy for Manipulation, Navigation, Locomotion and Aviation</h1>
+          <div class="is-size-5 publication-authors">
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://openreview.net/forum?id=AuJnXGq3AL"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" src="./static/images/crossformer_teaser.png" alt="CrossFormer teaser image."/>
+      <br><br>
+      <h2 class="subtitle has-text-centered">
+        CrossFormer is the first robot policy achieving state-of-the-art performance across six embodiments of distinct action spaces without <i>any</i> action space alignment.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Modern machine learning systems rely on large datasets to attain broad generalization, and this often poses a challenge in robot learning, where each robotic platform and task might have only a small dataset. 
+            By training a single policy across many different kinds of robots, a robot learning method can leverage much broader and more diverse datasets, which in turn can lead to better generalization and robustness.
+            However, training a single policy on multi-robot data is challenging because robots can have widely varying sensors, actuators, and control frequencies. 
+          </p>
+          <p>
+            We propose <b>CrossFormer</b>, a scalable and flexible transformer-based policy that can consume data from any embodiment. 
+            We train CrossFormer on the largest and most diverse dataset to date, 900K trajectories across 30 different robot embodiments. 
+            We demonstrate that the same network weights can control vastly different robots, including single and dual arm manipulation systems, wheeled robots, quadcopters, and quadrupeds. 
+            Unlike prior work, our model does not require manual alignment of the observation or action spaces. 
+            Extensive experiments in the real world show that our method matches the performance of specialist policies tailored for each embodiment, while also significantly outperforming the prior state of the art in cross-embodiment learning.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <!--/ Abstract. -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="columns is-centered has-text-centered">
+          <h2 class="title">Evaluation Videos</h2>
+        </div>
+        <p>
+          In this section, we provide evaluation videos for each of our four distinct action modes: 
+          Single-Arm Manipulation, Bimanual Manipulation, Navigation, and Locomotion.
+        </p>
+        <br>
+        
+        <!-- Single Arm Manipulation. -->
+        <h3 class="title is-4">Single-Arm Manipulation</h3>
+        <div class="content has-text-justified">
+          <p>
+            On the Franka, we evaluate on a sweeping task, in which the robot's goal is to grasp the grey brush and sweep
+            the acorns into the dustpan. A rollout's score is based on the number of acorns (out of three) that are completely
+            within the dustpan at the end of 250 timesteps. Videos are played in <b> 3x </b> speed.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-full-width has-text-centered">
+            <video id="franka_vid" autoplay controls muted loop playsinline height="100%" width="100%" controls loop>
+              <source src="./static/videos/crossformer/franka.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <br/>
+        <!--/ Single Arm Manipulation. -->
+
+        <!-- Bimanual Manipulation -->
+        <h3 class="title is-4">Bimanual Manipulation</h3>
+        <div class="content has-text-justified">
+          <p>
+            On the ALOHA bimanual embodiment, the robot's goal is to uncap the pen. A rollout is given a score of 1 if the pen is
+            successfully uncapped at the end of 300 timesteps, and 0 otherwise. Video is played in <b> 1x </b> speed.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-full-width has-text-centered">
+            <video id="bimanual_vid" autoplay controls muted loop playsinline height="100%" width="100%" controls loop>
+              <source src="./static/videos/crossformer/bimanual.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <br/>
+
+        <!-- Bimanual Manipulation -->
+
+        <!-- Navigation -->
+        <h3 class="title is-4">Navigation</h3>
+        <div class="content has-text-justified">
+          <p>
+            For ground and aerial navigation, a rollout's score is defined by its distance from the goal node in the topological map.
+            Videos are played in <b> 2x </b> speed.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-full-width has-text-centered">
+            <video id="nav_vid" autoplay controls muted loop playsinline height="100%" width="100%" controls loop>
+              <source src="./static/videos/crossformer/nav_vid.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <br/>
+        <!--/ Navigation. -->
+
+        <!-- Locomotion -->
+        <h3 class="title is-4">Locomotion</h3>
+        <div class="content has-text-justified">
+          <p>
+            The simulated robot dog should learn to walk forward. Video is played in <b> 2x </b> speed.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-full-width has-text-centered">
+            <video id="locomotion_vid" autoplay controls muted loop playsinline height="100%" width="100%" controls loop>
+              <source src="./static/videos/crossformer/locomotion.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <br/>
+        <!--/ Locomotion. -->
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Comparison to Yang et. al. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="columns is-centered has-text-centered">
+          <h2 class="title">Comparison to Yang et. al.</h2>
+        </div>
+        <p>
+          In this section, we compare video rollouts of our policy alongside the closest related prior work, <a href="https://arxiv.org/abs/2402.19432">Yang et. al.</a>,
+          whose work aligns action spaces across manipulation and navigation. Crucially, our method does not require any alignment, allowing for 
+          generalization across a wider range of action spaces and embodiments, while maintaining state-of-the-art performance. All navigation
+          and manipulation tasks use the same evaluation protocol specified above.
+        </p>
+        <br>
+
+        <!-- Simple Corner Turning. -->
+        <h3 class="title is-4">Corner-Turning</h3>
+        <div class="content has-text-justified">
+          <p>
+            The robot must turn the corner. Videos are played in <b> 2x </b> speed.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-full-width has-text-centered">
+            <video id="simple_vid" autoplay controls muted loop playsinline height="100%" width="100%" controls loop>
+              <source src="./static/videos/crossformer/turn_corner1.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <br/>
+        <!--/ Simple Corner Turning. -->
+
+        <!-- Obstacle Avoidance -->
+        <h3 class="title is-4">Obstacle Avoidance</h3>
+        <div class="content has-text-justified">
+          <p>
+            In each of these scenes, the robot must avoid the obstacle blocking its path. Videos are played in <b> 2x </b> speed.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-full-width has-text-centered">
+            <video id="obs1_vid" autoplay controls muted loop playsinline height="100%" width="100%" controls loop>
+              <source src="./static/videos/crossformer/obsavoid1.mp4"
+                      type="video/mp4">
+            </video>
+
+            <video id="obs2_vid" autoplay controls muted loop playsinline height="100%" width="100%" controls loop>
+              <source src="./static/videos/crossformer/obsavoid2.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <br/>
+
+        <!-- Obstacle Avoidance. -->
+
+        <!-- Sharp Turns -->
+        <h3 class="title is-4">Sharp Turns</h3>
+        <div class="content has-text-justified">
+          <p>
+            The robot must navigate a series of sharp turns within a narrow region. Videos are played in <b> 2x </b> speed.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-full-width has-text-centered">
+            <video id="sharpturns_vid" autoplay controls muted loop playsinline height="100%" width="100%" controls loop>
+              <source src="./static/videos/crossformer/sharpturns1.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <br/>
+        <!--/ Sharp Turns. -->
+
+        <!-- Manipulation -->
+        <h3 class="title is-4">Third-Person Single-Arm Manipulation</h3>
+        <div class="content has-text-justified">
+          <p>
+            describe task. Videos are played in <b> 3x </b> speed.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-full-width has-text-centered">
+            <video id="3pmanip_vid" autoplay controls muted loop playsinline height="100%" width="100%" controls loop>
+              <!-- <source src="./static/videos/crossformer/sharpturns1.mp4"
+                      type="video/mp4"> -->
+            </video>
+          </div>
+        </div>
+        <br/>
+        <!--/ Sharp Turns. -->
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        This website was adapted from the following <a
+          href="https://github.com/nerfies/nerfies.github.io">source code</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Access the video element
+  var nav_video = document.getElementById('nav_vid');
+  nav_video.addEventListener('loadedmetadata', function() {
+    nav_video.playbackRate = 2.0;
+  });
+  nav_video.addEventListener('canplay', function() {
+    nav_video.play();
+  });
+
+  var franka_vid = document.getElementById('franka_vid');
+  franka_vid.addEventListener('loadedmetadata', function() {
+    franka_vid.playbackRate = 3.0;
+  });
+  franka_vid.addEventListener('canplay', function() {
+    franka_vid.play();
+  });
+
+  var locomotion_vid = document.getElementById('locomotion_vid');
+  locomotion_vid.addEventListener('loadedmetadata', function() {
+    locomotion_vid.playbackRate = 2.0;
+  });
+  locomotion_vid.addEventListener('canplay', function() {
+    locomotion_vid.play();
+  });
+
+  var simple_vid = document.getElementById('simple_vid');
+  simple_vid.addEventListener('loadedmetadata', function() {
+    simple_vid.playbackRate = 2.0;
+  });
+  simple_vid.addEventListener('canplay', function() {
+    simple_vid.play();
+  });
+
+  var obs1_vid = document.getElementById('obs1_vid');
+  obs1_vid.addEventListener('loadedmetadata', function() {
+    obs1_vid.playbackRate = 2.0;
+  });
+  obs1_vid.addEventListener('canplay', function() {
+    obs1_vid.play();
+  });
+
+  var obs2_vid = document.getElementById('obs2_vid');
+  obs2_vid.addEventListener('loadedmetadata', function() {
+    obs2_vid.playbackRate = 2.0;
+  });
+  obs2_vid.addEventListener('canplay', function() {
+    obs2_vid.play();
+  });
+
+  var sharpturn_vid = document.getElementById('sharpturn_vid');
+  sharpturn_vid.addEventListener('loadedmetadata', function() {
+    sharpturn_vid.playbackRate = 2.0;
+  });
+  sharpturn_vid.addEventListener('canplay', function() {
+    sharpturn_vid.play();
+  });
+</script>
+
+</body>
 </html>
