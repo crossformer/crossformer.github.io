@@ -144,7 +144,7 @@
 
             <br><br>
 
-            <b>Matched State-of-the-Art Policy? ✅︎ </b> 
+            <b>Matches State-of-the-Art Performance? ✅︎ </b> 
             <br>
             We show that it is possible to co-train a policy on a variety of diverse embodiments, not just limited to single-arm manipulators, while maintaining performance achieved by <a target="_blank" href="https://arxiv.org/abs/2405.12213">prior work</a> trained only on single-arm-data. 
           </p>
@@ -173,7 +173,7 @@
 
             <br><br>
 
-            <b>Matched State-of-the-Art Policy? ✅︎ </b> 
+            <b>Matches State-of-the-Art Performance? ✅︎ </b> 
             <br>
             CrossFormer is first work to show successful performance of a cross-embodiment policy on a bimanual robot. 
             The bimanual embodiment is challenging due to various specifications, including longer-horizon action chunking and a higher control frequency (50hz). 
@@ -205,7 +205,7 @@
   
             <br><br>
   
-            <b>Matched State-of-the-Art Policy? ✅︎ </b> 
+            <b>Matches State-of-the-Art Performance? ✅︎ </b> 
             <br>
             Without any action-space alignment, our policy is capable of navigating trajectories both indoors and outdoors, as well as on out-of-distribution paths. 
             In addition, we show strong performance on more complex navigation tasks, such as obstacle avoidance, sharp turns, and corner-turning (see the section <a href=#baseline_comp>below</a>). 
@@ -236,7 +236,7 @@
   
             <br><br>
   
-            <b>Matched State-of-the-Art Policy? ✅︎ </b> 
+            <b>Matches State-of-the-Art Performance? ✅︎ </b> 
             <br>
             Our policy is the <i>first</i> to successfully train a cross-embodiment policy that successfully controls manipulators, navigators, and low-level motion of quadrupeds. 
             The most related cross-embodiment <a target="_blank" href="https://arxiv.org/abs/2402.19432">prior work</a> controls quadrupeds using high-level, 2D waypoints, fundamentally reducing the embodiment to a navigator. 
@@ -281,7 +281,15 @@
         <h3 class="title is-4">Corner-Turning</h3>
         <div class="content has-text-justified">
           <p>
-            The robot must turn the corner. 
+            The robot must turn the corner. For all navigation tasks, success is measured by distance from the node to the goal node in the topological map. 
+            The rollout ends once the robot has collided with an obstacle. 
+            
+            <br><br>
+            <b>Success Rate:</b>
+            <br>
+            Yang et. al: 59.5% 
+            <br>
+            <b><i style="background-color:lawngreen">  CrossFormer: 95%</b></i>
           </p>
         </div>
         <div class="columns is-vcentered interpolation-panel">
@@ -299,8 +307,14 @@
         <h3 class="title is-4">Obstacle Avoidance</h3>
         <div class="content has-text-justified">
           <p>
-            In each of these scenes, the robot must avoid the obstacle blocking its path. 
+            In each of these scenes, the robot must navigate a variety of obstacles to reach the goal node at the end of the trajectory.
           </p>
+
+          <b>Success Rate:</b>
+          <br>
+          Yang et. al: 24.25% 
+          <br>
+          <b><i style="background-color:lawngreen">  CrossFormer: 95%</b></i>
         </div>
         <div class="columns is-vcentered interpolation-panel">
           <div class="column is-full-width has-text-centered">
@@ -325,6 +339,13 @@
           <p>
             The robot must navigate a series of sharp turns within a narrow region. 
           </p>
+
+          <b>Success Rate:</b>
+          <br>
+          Yang et. al: 15% 
+          <br>
+          <b><i style="background-color:lawngreen">  CrossFormer: 87.5%</b></i>
+
         </div>
         <div class="columns is-vcentered interpolation-panel">
           <div class="column is-full-width has-text-centered">
@@ -343,6 +364,12 @@
           <p>
             describe task. 
           </p>
+
+          <b>Success Rate:</b>
+          <br>
+          Yang et. al: 0% 
+          <br>
+          <b><i style="background-color:lawngreen">  CrossFormer: 25%</b></i>
         </div>
         <div class="columns is-vcentered interpolation-panel">
           <div class="column is-full-width has-text-centered">
