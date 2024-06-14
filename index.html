@@ -125,7 +125,8 @@
         </div>
         <p>
           In this section, we provide evaluation videos for each of our four distinct action modes: 
-          Single-Arm Manipulation, Bimanual Manipulation, Navigation, and Locomotion.
+          Single-Arm Manipulation, Bimanual Manipulation, Navigation, and Locomotion. 
+          Here, the state-of-the-art method refers to the best prior method or the single-robot baseline, whichever has a higher success rate.
         </p>
         <br>
         
@@ -151,15 +152,15 @@
         </div>
         <div class="columns is-vcentered interpolation-panel">
           <div class="column is-full-width has-text-centered">
-            <video id="franka_vid" autoplay controls muted loop playsinline height="100%" width="100%" controls loop>
-              <source src="./static/videos/crossformer/franka.mp4"
+            <video id="manip_vid" autoplay controls muted loop playsinline height="100%" width="100%" controls loop>
+              <source src="./static/videos/crossformer/manip.mp4"
                       type="video/mp4">
             </video>
           </div>
         </div>
         <br/>
         <!--/ Single Arm Manipulation. -->
-
+        
         <!-- Bimanual Manipulation -->
         <h3 class="title is-4">Bimanual Manipulation</h3>
         <div class="content has-text-justified">
@@ -374,8 +375,8 @@
         <div class="columns is-vcentered interpolation-panel">
           <div class="column is-full-width has-text-centered">
             <video id="3pmanip_vid" autoplay controls muted loop playsinline height="100%" width="100%" controls loop>
-              <!-- <source src="./static/videos/crossformer/sharpturns1.mp4"
-                      type="video/mp4"> -->
+              <source src="./static/videos/crossformer/3pmanip.mp4"
+                      type="video/mp4">
             </video>
           </div>
         </div>
@@ -404,7 +405,7 @@
   home_vid.addEventListener('loadedmetadata', function() {
     home_vid.playbackRate = 2.0;
   });
-  home_vid.addEventListener('canplaythrough', function() {
+  home_vid.addEventListener('canplay', function() {
     home_vid.play();
   });
   // Access the video element
@@ -412,23 +413,23 @@
   nav_video.addEventListener('loadedmetadata', function() {
     nav_video.playbackRate = 2.0;
   });
-  nav_video.addEventListener('canplaythrough', function() {
+  nav_video.addEventListener('canplay', function() {
     nav_video.play();
   });
 
-  var franka_vid = document.getElementById('franka_vid');
-  franka_vid.addEventListener('loadedmetadata', function() {
-    franka_vid.playbackRate = 3.0;
+  var manip_vid = document.getElementById('manip_vid');
+  manip_vid.addEventListener('loadedmetadata', function() {
+    manip_vid.playbackRate = 2.0;
   });
-  franka_vid.addEventListener('canplaythrough', function() {
-    franka_vid.play();
+  manip_vid.addEventListener('canplay', function() {
+    manip_vid.play();
   });
 
   var locomotion_vid = document.getElementById('locomotion_vid');
   locomotion_vid.addEventListener('loadedmetadata', function() {
     locomotion_vid.playbackRate = 2.0;
   });
-  locomotion_vid.addEventListener('canplaythrough', function() {
+  locomotion_vid.addEventListener('canplay', function() {
     locomotion_vid.play();
   });
 
@@ -436,7 +437,7 @@
   simple_vid.addEventListener('loadedmetadata', function() {
     simple_vid.playbackRate = 2.0;
   });
-  simple_vid.addEventListener('canplaythrough', function() {
+  simple_vid.addEventListener('canplay', function() {
     simple_vid.play();
   });
 
@@ -444,7 +445,7 @@
   obs1_vid.addEventListener('loadedmetadata', function() {
     obs1_vid.playbackRate = 2.0;
   });
-  obs1_vid.addEventListener('canplaythrough', function() {
+  obs1_vid.addEventListener('canplay', function() {
     obs1_vid.play();
   });
 
@@ -452,7 +453,7 @@
   obs2_vid.addEventListener('loadedmetadata', function() {
     obs2_vid.playbackRate = 2.0;
   });
-  obs2_vid.addEventListener('canplaythrough', function() {
+  obs2_vid.addEventListener('canplay', function() {
     obs2_vid.play();
   });
 
@@ -460,7 +461,7 @@
   sharpturn_vid.addEventListener('loadedmetadata', function() {
     sharpturn_vid.playbackRate = 2.0;
   });
-  sharpturn_vid.addEventListener('canplaythrough', function() {
+  sharpturn_vid.addEventListener('canplay', function() {
     sharpturn_vid.play();
   });
 
