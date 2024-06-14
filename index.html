@@ -270,9 +270,9 @@
           <h2 class="title">Comparison to Yang et. al.</h2>
         </div>
         <p>
-          In this section, we compare video rollouts of our policy alongside the closest related prior work, <a target="_blank" href="https://arxiv.org/abs/2402.19432">Yang et. al.</a>,
-          whose work aligns action spaces across manipulation and navigation. Though this work is the first to successfully train a policy on both manipulation and navigation, it requires ego-centric camera views to perform action-space alignment, 
-          which limits the tasks possible and sometimes hinders performance on complex navigation and third-person single-arm manipulation tasks. 
+          In this section, we compare video rollouts of our policy to <a target="_blank" href="https://arxiv.org/abs/2402.19432">Yang et. al.</a>,
+          who train a single policy across manipulation and navigation by aligning the observation and action spaces. Though this work is the first to 
+          demonstrate positive transfer from navigation to manipulation, we find that observation and action-space alignment sometimes hinders performance on complex navigation and third-person single-arm manipulation tasks.
           <br><br>
           Our method forgoes this alignment and achieves better performance — qualitatively, our navigation policies are smoother with less stop & go movement, while quantitatively, our policies achieve an average of <b>3x</b> higher success rates on complex navigation and manipulation tasks. 
         </p>
