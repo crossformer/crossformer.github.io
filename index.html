@@ -240,8 +240,8 @@
             <b>Matches State-of-the-Art Performance? ✅︎ </b> 
             <br>
             Our policy is the <i>first</i> to successfully train a cross-embodiment policy that successfully controls manipulators, navigators, and low-level motion of quadrupeds. 
-            The most related cross-embodiment <a target="_blank" href="https://arxiv.org/abs/2402.19432">prior work</a> controls quadrupeds using high-level, 2D waypoints, fundamentally reducing the embodiment to a navigator. 
-            CrossFormer can not only control such navigators with 2D waypoints, but is also capable of handling the low-level, 12-dimensional actions needed to entirely control a quadrupedal robot, which is not possible with prior cross-embodiment work. 
+            The most related cross-embodiment <a target="_blank" href="https://arxiv.org/abs/2402.19432">prior work</a> controls quadrupeds using high-level, 2D waypoints. 
+            CrossFormer can not only control such navigators with 2D waypoints, but is also capable of handling the low-level, 12-dimensional actions needed to entirely control a quadrupedal robot.
   
           </p>
         </div>
@@ -271,10 +271,10 @@
         </div>
         <p>
           In this section, we compare video rollouts of our policy alongside the closest related prior work, <a target="_blank" href="https://arxiv.org/abs/2402.19432">Yang et. al.</a>,
-          whose work aligns action spaces across manipulation and navigation. Yang et. al. show joint performance of a policy on manipuation and navigation tasks,
-          but require ego-centric camera views to perform action-space alignment, which is (1) not scalable, (2) limits the tasks possible, and (3) significantly hinders performance on complex navigation and third-person single-arm manipulation tasks. 
+          whose work aligns action spaces across manipulation and navigation. Though this work is the first to successfully train a policy on both manipulation and navigation, it requires ego-centric camera views to perform action-space alignment, 
+          which limits the tasks possible and sometimes hinders performance on complex navigation and third-person single-arm manipulation tasks. 
           <br><br>
-          Our method forgoes this alignment altogether and reaches much better performance — qualitatively, our navigation policies are much smoother with less stop & go movement, while quantitatively, our policies achieve an average of <b>3x</b> higher success rates on complex navigation and manipulation tasks. 
+          Our method forgoes this alignment and achieves better performance — qualitatively, our navigation policies are much smoother with less stop & go movement, while quantitatively, our policies achieve an average of <b>3x</b> higher success rates on complex navigation and manipulation tasks. 
         </p>
         <br>
 
