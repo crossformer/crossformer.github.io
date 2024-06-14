@@ -18,7 +18,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" href="./static/images/favicon.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -33,7 +33,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Scaling Cross-Embodied Learning: One Policy for Manipulation, Navigation, Locomotion and Aviation</h1>
+          <h1 class="title is-1 publication-title">Scaling Cross-Embodied Learning:</br> One Policy for Manipulation, Navigation, Locomotion and Aviation</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               Anonymous Author(s).
@@ -69,7 +69,7 @@
             </video>
             <br><br>
             <h2 class="subtitle has-text-centered">
-                CrossFormer is the first robot policy achieving state-of-the-art performance across six embodiments of distinct action spaces without <i>any</i> action space alignment.
+                CrossFormer is the first robot policy to achieve state-of-the-art performance across six embodiments of distinct action spaces without <i>any</i> action space alignment.
             </h2>
         </div>
     </div>
@@ -132,10 +132,21 @@
         <!-- Single Arm Manipulation. -->
         <h3 class="title is-4">Single-Arm Manipulation</h3>
         <div class="content has-text-justified">
-          <p>
+          <!-- <p>
             On the Franka, we evaluate on a sweeping task, in which the robot's goal is to grasp the grey brush and sweep
             the acorns into the dustpan. A rollout's score is based on the number of acorns (out of three) that are completely
             within the dustpan at the end of 250 timesteps. Videos are played in <b> 3x </b> speed.
+          </p> -->
+          <p> 
+            <b>Task Description:</b> 
+            On the Franka, we evaluate on a sweeping task, in which the robot's goal is to grasp the grey brush and sweep the acorns into the dustpan.
+            On the WidowX, we evaluate on two different pick and place tasks: put the mushroom in the silver pot and place the spoon on the blue towel. 
+
+            <br><br>
+
+            <b>Matched State-of-the-Art Policy? ✅︎ </b> 
+            <br>
+            We show that it is possible to co-train a policy on a variety of diverse embodiments, not just limited to single-arm manipulators, while maintaining performance achieved by <a target="_blank" href="https://arxiv.org/abs/2405.12213">prior work</a> trained only on single-arm-data. 
           </p>
         </div>
         <div class="columns is-vcentered interpolation-panel">
@@ -152,9 +163,21 @@
         <!-- Bimanual Manipulation -->
         <h3 class="title is-4">Bimanual Manipulation</h3>
         <div class="content has-text-justified">
-          <p>
+          <!-- <p>
             On the ALOHA bimanual embodiment, the robot's goal is to uncap the pen. A rollout is given a score of 1 if the pen is
             successfully uncapped at the end of 300 timesteps, and 0 otherwise. Video is played in <b> 1x </b> speed.
+          </p> -->
+          <p> 
+            <b>Task Description:</b> 
+            The robot's goal is to uncap the orange Sharpie pen. 
+
+            <br><br>
+
+            <b>Matched State-of-the-Art Policy? ✅︎ </b> 
+            <br>
+            CrossFormer is first work to show successful performance of a cross-embodiment policy on a bimanual robot. 
+            The bimanual embodiment is challenging due to various specifications, including longer-horizon action chunking and a higher control frequency (50hz). 
+            Our method's flexibility allows us to meet such robot-specific constraints without adversely impacting performance on other embodiments. 
           </p>
         </div>
         <div class="columns is-vcentered interpolation-panel">
@@ -172,10 +195,23 @@
         <!-- Navigation -->
         <h3 class="title is-4">Navigation</h3>
         <div class="content has-text-justified">
-          <p>
+          <!-- <p>
             For ground and aerial navigation, a rollout's score is defined by its distance from the goal node in the topological map.
             Videos are played in <b> 2x </b> speed.
+          </p> -->
+          <p> 
+            <b>Task Description:</b> 
+            Given a topological map of goals, the navigation robot should follow the path to the goal while avoiding any collisions. 
+  
+            <br><br>
+  
+            <b>Matched State-of-the-Art Policy? ✅︎ </b> 
+            <br>
+            Without any action-space alignment, our policy is capable of navigating trajectories both indoors and outdoors, as well as on out-of-distribution paths. 
+            In addition, we show strong performance on more complex navigation tasks, such as obstacle avoidance, sharp turns, and corner-turning (see the section <a href=#baseline_comp>below</a>). 
+  
           </p>
+          
         </div>
         <div class="columns is-vcentered interpolation-panel">
           <div class="column is-full-width has-text-centered">
@@ -191,8 +227,21 @@
         <!-- Locomotion -->
         <h3 class="title is-4">Locomotion</h3>
         <div class="content has-text-justified">
-          <p>
+          <!-- <p>
             The simulated robot dog should learn to walk forward. Video is played in <b> 2x </b> speed.
+          </p> -->
+          <p> 
+            <b>Task Description:</b> 
+            The quadrupedal robot must learn to successfully walk forward.
+  
+            <br><br>
+  
+            <b>Matched State-of-the-Art Policy? ✅︎ </b> 
+            <br>
+            Our policy is the <i>first</i> to successfully train a cross-embodiment policy that successfully controls manipulators, navigators, and low-level motion of quadrupeds. 
+            The most related cross-embodiment <a target="_blank" href="https://arxiv.org/abs/2402.19432">prior work</a> controls quadrupeds using high-level, 2D waypoints, fundamentally reducing the embodiment to a navigator. 
+            CrossFormer can not only control such navigators with 2D waypoints, but is also capable of handling the low-level, 12-dimensional actions needed to entirely control a quadrupedal robot, which is not possible with prior cross-embodiment work. 
+  
           </p>
         </div>
         <div class="columns is-vcentered interpolation-panel">
@@ -210,7 +259,7 @@
     <!--/ Animation. -->
 
 
-<section class="section">
+<section class="section" id="baseline_comp">
   <div class="container is-max-desktop">
 
     <!-- Comparison to Yang et. al. -->
@@ -220,10 +269,11 @@
           <h2 class="title">Comparison to Yang et. al.</h2>
         </div>
         <p>
-          In this section, we compare video rollouts of our policy alongside the closest related prior work, <a href="https://arxiv.org/abs/2402.19432">Yang et. al.</a>,
-          whose work aligns action spaces across manipulation and navigation. Crucially, our method does not require any alignment, allowing for 
-          generalization across a wider range of action spaces and embodiments, while maintaining state-of-the-art performance. All navigation
-          and manipulation tasks use the same evaluation protocol specified above.
+          In this section, we compare video rollouts of our policy alongside the closest related prior work, <a target="_blank" href="https://arxiv.org/abs/2402.19432">Yang et. al.</a>,
+          whose work aligns action spaces across manipulation and navigation. Yang et. al. show joint performance of a policy on manipuation and navigation tasks,
+          but require ego-centric camera views to perform action-space alignment, which is (1) not scalable, (2) limits the tasks possible, and (3) significantly hinders performance on complex navigation and third-person single-arm manipulation tasks. 
+          <br><br>
+          Our method forgoes this alignment altogether and reaches much better performance — qualitatively, our navigation policies are much smoother with less stop & go movement, while quantitatively, our policies achieve an average of <b>3x</b> higher success rates on complex navigation and manipulation tasks. 
         </p>
         <br>
 
@@ -231,7 +281,7 @@
         <h3 class="title is-4">Corner-Turning</h3>
         <div class="content has-text-justified">
           <p>
-            The robot must turn the corner. Videos are played in <b> 2x </b> speed.
+            The robot must turn the corner. 
           </p>
         </div>
         <div class="columns is-vcentered interpolation-panel">
@@ -249,7 +299,7 @@
         <h3 class="title is-4">Obstacle Avoidance</h3>
         <div class="content has-text-justified">
           <p>
-            In each of these scenes, the robot must avoid the obstacle blocking its path. Videos are played in <b> 2x </b> speed.
+            In each of these scenes, the robot must avoid the obstacle blocking its path. 
           </p>
         </div>
         <div class="columns is-vcentered interpolation-panel">
@@ -273,7 +323,7 @@
         <h3 class="title is-4">Sharp Turns</h3>
         <div class="content has-text-justified">
           <p>
-            The robot must navigate a series of sharp turns within a narrow region. Videos are played in <b> 2x </b> speed.
+            The robot must navigate a series of sharp turns within a narrow region. 
           </p>
         </div>
         <div class="columns is-vcentered interpolation-panel">
@@ -291,7 +341,7 @@
         <h3 class="title is-4">Third-Person Single-Arm Manipulation</h3>
         <div class="content has-text-justified">
           <p>
-            describe task. Videos are played in <b> 3x </b> speed.
+            describe task. 
           </p>
         </div>
         <div class="columns is-vcentered interpolation-panel">
